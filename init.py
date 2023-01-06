@@ -78,13 +78,13 @@ class ArithematicCoding:
 
     def rescaling_decoding(self, high, low, tag):
         counter = 0
-        while not (high >= 0.5 and low < 0.5):
+        while not (high > 0.5 and low < 0.5):
             # clear output
             counter += 1
-            if high < 0.5 and low < 0.5:
+            if high <= 0.5 and low < 0.5:
                 high = d(high*2)
                 low = d(low*2)
-            elif high >= 0.5 and low >= 0.5:
+            elif high > 0.5 and low >= 0.5:
                 high = d((high * 2)  - 1)
                 low = d((low  * 2)  - 1)
             # remove the first bit from the tag
@@ -94,14 +94,14 @@ class ArithematicCoding:
 
     def rescaling(self, high, low, bits):
         # print("rescaling")
-        while not (high >= 0.5 and low < 0.5):
+        while not (high > 0.5 and low < 0.5):
             # clear output
             self.counter += 1
-            if high < 0.5 and low < 0.5:
+            if high <= 0.5 and low < 0.5:
                 high = d(high*2)
                 low = d(low*2)
                 bits.append(0)
-            elif high >= 0.5 and low >= 0.5:
+            elif high > 0.5 and low >= 0.5:
                 high = d((high * 2)  - 1)
                 low = d((low  * 2)  - 1)
                 bits.append(1)
